@@ -2,6 +2,7 @@
   "name": "reasoncoin",
   "version": "0.1.0",
   "scripts": {
+    "test": "jest",
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w"
