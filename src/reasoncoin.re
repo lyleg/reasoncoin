@@ -14,21 +14,26 @@ type block = {
 
 type blockchain = list block;
 
+
+let createHash ::index ::currentTime ::data ::previous_hash=>{
+  sha256 (
+    string_of_int index ^ string_of_int currentTime ^ data ^ previous_hash
+  )
+};
 /*
  function that returns a block record
  */
 let blockBuilder ::index ::previous_hash => {
   let currentTime = currentTime ();
   let data = "Hey! I'm block " ^ string_of_int index;
+  let hash = createHash index::index currentTime::currentTime data::data previous_hash::previous_hash;
   {
     index,
     previous_hash,
     timestamp: currentTime,
     data,
-    hash:
-      sha256 (
-        string_of_int index ^ string_of_int currentTime ^ data ^ previous_hash
-      )
+    hash
+
   }
 };
 

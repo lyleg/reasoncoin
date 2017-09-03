@@ -20,32 +20,28 @@ let reasonBlockChain =
 
 let numCoins = List.length reasonBlockChain;
 
-let firstBlock = List.nth reasonBlockChain (numCoins - 1);
-
-let secondBlock = List.nth reasonBlockChain (numCoins - 2);
-
-let firstBlockExpectedHash = secondBlock.previous_hash;
-
-let firstBlockCalculatedHash =
-  sha256 (
-    string_of_int firstBlock.index ^
-    string_of_int firstBlock.timestamp ^
-    firstBlock.data ^ firstBlock.previous_hash
-  );
-
-/*expect secondBlock previous hash to equal re-computed hash */
-/*check hash references*/
 let _ =
   describe
-    "Expect hashes to match"
+    "Iterate through each coin while checking the computed hash from n to the hash recorded in n+1"
     (
       fun () =>
-        Expect.(
-          test
-            "Hashes should match"
-            (
-              fun () =>
-                expect firstBlockExpectedHash |> toBe firstBlockCalculatedHash
-            )
-        )
+        for blockIndex in (numCoins - 1) downto 1 {
+          Expect.(
+            test
+              ("Hashes should match, checking " ^ string_of_int blockIndex)
+              (
+                fun () => {
+                  let block = List.nth reasonBlockChain blockIndex;
+                  let nextCoin = List.nth reasonBlockChain (blockIndex - 1);
+                  let blockCalculatedHash =
+                    Reasoncoin.createHash
+                      index::block.index
+                      data::block.data
+                      currentTime::block.timestamp
+                      previous_hash::block.previous_hash;
+                  expect nextCoin.previous_hash |> toBe blockCalculatedHash
+                }
+              )
+          )
+        }
     );
