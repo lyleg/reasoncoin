@@ -45,3 +45,29 @@ let _ =
           )
         }
     );
+
+let _ =
+  describe
+    "Change data and verify the hashes no longer match"
+    (
+      fun () => {
+        let block = List.nth reasonBlockChain (numCoins - 1);
+        let nextBlock = List.nth reasonBlockChain (numCoins - 2);
+        let expectedBlockHash = nextBlock.previous_hash;
+        let modifiedBlock = {...block, data: "He Hax"};
+        let modifiedBlockHash =
+          Reasoncoin.createHash
+            index::modifiedBlock.index
+            data::modifiedBlock.data
+            currentTime::modifiedBlock.timestamp
+            previous_hash::modifiedBlock.previous_hash;
+        Expect.(
+          test
+            "Hashes should no longer match"
+            (
+              fun () =>
+                expect modifiedBlockHash |> not_ |> toBe expectedBlockHash
+            )
+        )
+      }
+    );
