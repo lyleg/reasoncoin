@@ -1,4 +1,4 @@
-let genesisBlock = Reasoncoin.create_genesis_block ();
+let genesisBlock = Reasoncoin.createGenesisBlock ();
 
 let blocksToAdd: list int = Utils.range 0 20;
 
@@ -7,7 +7,7 @@ let reasonBlockChain =
     (
       fun blockchain _index => {
         let firstBlock = List.nth blockchain 0;
-        let newBlock = Reasoncoin.next_block firstBlock;
+        let newBlock = Reasoncoin.nextBlock firstBlock;
         [newBlock, ...blockchain]
       }
     )
