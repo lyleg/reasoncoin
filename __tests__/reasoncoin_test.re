@@ -11,7 +11,7 @@ let reasonBlockChain =
     (
       fun blockchain _index => {
         let firstBlock = List.nth blockchain 0;
-        let newBlock = Reasoncoin.next_block firstBlock;
+        let newBlock = Reasoncoin.nextBlock firstBlock;
         [newBlock, ...blockchain]
       }
     )
@@ -38,8 +38,8 @@ let _ =
                       index::block.index
                       data::block.data
                       currentTime::block.timestamp
-                      previous_hash::block.previous_hash;
-                  expect nextCoin.previous_hash |> toBe blockCalculatedHash
+                      previousHash::block.previousHash;
+                  expect nextCoin.previousHash |> toBe blockCalculatedHash
                 }
               )
           )
@@ -53,14 +53,14 @@ let _ =
       fun () => {
         let block = List.nth reasonBlockChain (numCoins - 1);
         let nextBlock = List.nth reasonBlockChain (numCoins - 2);
-        let expectedBlockHash = nextBlock.previous_hash;
+        let expectedBlockHash = nextBlock.previousHash;
         let modifiedBlock = {...block, data: "He Hax"};
         let modifiedBlockHash =
           Reasoncoin.createHash
             index::modifiedBlock.index
             data::modifiedBlock.data
             currentTime::modifiedBlock.timestamp
-            previous_hash::modifiedBlock.previous_hash;
+            previousHash::modifiedBlock.previousHash;
         Expect.(
           test
             "Hashes should no longer match"
