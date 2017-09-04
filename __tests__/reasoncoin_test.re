@@ -2,7 +2,7 @@ external sha256 : string => string = "sha256" [@@bs.module "js-sha256"];
 
 open Jest;
 
-let genesisBlock = Reasoncoin.create_genesis_block ();
+let genesisBlock = Reasoncoin.createGenesisBlock ();
 
 let blocksToAdd: list int = Utils.range 0 20;
 

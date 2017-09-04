@@ -33,7 +33,7 @@ let blockBuilder ::index ::previousHash => {
  Manually construct a block with
  index zero and arbitrary previous hash
  */
-let create_genesis_block () => blockBuilder index::0 previousHash::"0";
+let createGenesisBlock () => blockBuilder index::0 previousHash::"0";
 
 let nextBlock lastBlock => {
   let newIndex = lastBlock.index + 1;
