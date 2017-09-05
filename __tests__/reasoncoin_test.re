@@ -10,7 +10,7 @@ let reasonBlockChain =
   List.fold_left
     (
       fun blockchain _index => {
-        let firstBlock = List.nth blockchain 0;
+        let firstBlock = List.hd blockchain;
         let newBlock = Reasoncoin.nextBlock firstBlock;
         [newBlock, ...blockchain]
       }
