@@ -1,4 +1,4 @@
-[The Tinest Blockchain](https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b) rewritten in ReasonML
+[The Tiniest Blockchain](https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b) rewritten in ReasonML
 
 To Run:
 ```js
