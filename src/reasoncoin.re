@@ -14,7 +14,7 @@ type blockchain = list block;
 
 let createHash ::index ::currentTime ::data ::previousHash =>
   sha256 (
-    string_of_int index | string_of_float currentTime | data | previousHash
+    string_of_int index ^ string_of_float currentTime ^ data ^ previousHash
   );
 
 /*
