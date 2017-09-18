@@ -54,7 +54,16 @@ let _ =
         let block = List.nth reasonBlockChain (numCoins - 1);
         let nextBlock = List.nth reasonBlockChain (numCoins - 2);
         let expectedBlockHash = nextBlock.previousHash;
-        let modifiedBlock = {...block, data: "He Hax"};
+        let modifiedBlock = {
+          ...block,
+          data: Json.Encode.(
+            object_ [
+              ("toAddress", string "toAddyHere"),
+              ("fromAddress", string "fromAddyHere"),
+              ("amount", int 1)
+            ]
+          )
+        };
         let modifiedBlockHash =
           Reasoncoin.createHash
             index::modifiedBlock.index

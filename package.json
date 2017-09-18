@@ -13,10 +13,13 @@
   "license": "MIT",
   "devDependencies": {
     "bs-jest": "^0.1.0",
-    "bs-platform": "1.9.0",
+    "bs-platform": "^1.9.2",
     "jest": "^20.0.4"
   },
   "dependencies": {
+    "bs-express": "^0.0.2",
+    "bs-json": "^0.2.2",
+    "express": "^4.15.4",
     "js-sha256": "^0.6.0"
   }
 }

@@ -1,0 +1,47 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/0.27.5_1/libexec/bin/yarn.js add bs-platform --save
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Development/adt-bundle/sdk/platform-tools:/Development/adt-bundle/sdk/tools:/Development/adt-bundle/sdk
+
+Yarn version: 
+  0.27.5
+
+Node version: 
+  7.5.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "reasoncoin",
+    "version": "0.1.0",
+    "scripts": {
+      "test": "jest",
+      "clean": "bsb -clean-world",
+      "build": "bsb -make-world",
+      "watch": "bsb -make-world -w"
+    },
+    "keywords": [
+      "BuckleScript"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+      "bs-jest": "^0.1.0",
+      "bs-platform": "1.9.0",
+      "jest": "^20.0.4"
+    },
+    "dependencies": {
+      "js-sha256": "^0.6.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: ENOENT: no such file or directory, stat '/Users/lylegarza/projects/rn_app/reasoncoin/node_modules/bs-platform'
