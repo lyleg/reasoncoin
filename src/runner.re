@@ -1,17 +1,16 @@
-let genesisBlock = Reasoncoin.createGenesisBlock ();
+let genesisBlock = Reasoncoin.createGenesisBlock();
 
-let blocksToAdd: list int = Utils.range 0 20;
+let blocksToAdd: list(int) = Utils.range(0, 20);
 
 let reasonBlockChain =
-  List.fold_left
-    (
-      fun blockchain _index => {
-        let firstBlock = List.nth blockchain 0;
-        let newBlock = Reasoncoin.nextBlock firstBlock;
-        [newBlock, ...blockchain]
-      }
-    )
-    [genesisBlock]
-    blocksToAdd;
+  List.fold_left(
+    (blockchain, _index) => {
+      let firstBlock = List.nth(blockchain, 0);
+      let newBlock = Reasoncoin.nextBlock(firstBlock);
+      [newBlock, ...blockchain];
+    },
+    [genesisBlock],
+    blocksToAdd,
+  );
 
-List.iter (fun block => Js.log block) reasonBlockChain;
+List.iter(block => Js.log(block), reasonBlockChain);

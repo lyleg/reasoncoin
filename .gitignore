@@ -25,3 +25,5 @@ lib/js
 .vscode
 .merlin
 node_modules
+.DS_Store
+.bsb.lock
